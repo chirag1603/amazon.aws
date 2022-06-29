@@ -89,7 +89,7 @@ options:
       - Enable S3 Bucket Keys for SSE-KMS on new objects.
       - See the AWS documentation for more information
         U(https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html).
-      - Bucket Key encryption is only supported if I(encryption=aws:kms).    
+      - Bucket Key encryption is only supported if I(encryption=aws:kms).
     required: false
     type: bool
 
@@ -909,7 +909,7 @@ def wait_bucket_key_is_applied(module, s3_client, bucket_name, expected_encrypti
             encryption = get_bucket_key(s3_client, bucket_name)
         except (botocore.exceptions.BotoCoreError, botocore.exceptions.ClientError) as e:
             module.fail_json_aws(e, msg="Failed to get updated encryption for bucket")
-        if  encryption!= expected_encryption:
+        if encryption != expected_encryption:
             time.sleep(5)
         else:
             return encryption
