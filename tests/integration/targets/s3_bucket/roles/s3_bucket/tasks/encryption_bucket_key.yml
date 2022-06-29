@@ -28,7 +28,7 @@
         name: '{{ local_bucket_name }}'
         state: present
         encryption: "aws:kms"
-        encryption_bucket_key: true
+        bucket_key_enabled: true
       register: output
 
     - assert:
@@ -40,7 +40,7 @@
     - name: 'Re-enable bucket key for bucket with aws:kms encryption (idempotent)'
       s3_bucket:
         name: '{{ local_bucket_name }}'
-        encryption_bucket_key: true
+        bucket_key_enabled: true
       register: output
 
     - assert:
@@ -54,7 +54,7 @@
     - name: Disable encryption from bucket
       s3_bucket:
         name: '{{ local_bucket_name }}'
-        encryption_bucket_key: true
+        bucket_key_enabled: true
       register: output
 
     - assert:
@@ -65,7 +65,7 @@
     - name: Disable encryption from bucket (idempotent)
       s3_bucket:
         name: '{{ local_bucket_name }}'
-        encryption_bucket_key: true
+        bucket_key_enabled: true
       register: output
 
     - assert:
