@@ -35,7 +35,6 @@
         that:
           - output.changed
           - output.encryption
-          - output.encryption.SSEAlgorithm == 'aws:kms'
 
     - name: 'Re-enable bucket key for bucket with aws:kms encryption (idempotent)'
       s3_bucket:
@@ -47,7 +46,6 @@
         that:
           - not output.changed
           - output.encryption
-          - output.encryption.SSEAlgorithm == 'aws:kms'
 
     # ============================================================
 
